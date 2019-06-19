@@ -14,14 +14,14 @@ while (i < 3) and (guess != aRandomNumber):
 	else:
 		guess = int(guess) # converts a string to an integer
 
-	if guess == aRandomNumber:
-		print("You guessed correctly!")
-		break
-	elif guess < aRandomNumber:
-		i += 1
-		print("Guess again, you're too low")
-	else:
-		i += 1
-		print("Guess again, you're too high")
-	if i == 3:
-		print("out of guesses, the answer was ", aRandomNumber)
+		if guess == aRandomNumber:
+			print("You guessed correctly!")
+			break
+		elif guess < aRandomNumber:
+			i += 1
+			print("Guess again, you're too low")
+		else:
+			i += 1
+			print("Guess again, you're too high")
+		if i == 3:
+			print("out of guesses, the answer was ", aRandomNumber)
