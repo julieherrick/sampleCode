@@ -1,0 +1,64 @@
+import random
+
+def in_word(letter, word, dashed_word):
+	if letter in word:
+		return True
+
+def replace_letter(letter, chosen_word, dashed_word):
+	for i in range(len(dashed_word)):
+		if letter == chosen_word[i]:
+			dashed_word[i] = letter
+	return(dashed_word)
+
+#def not_in_word(letter, word)
+
+
+
+# A list of words that someone can guess
+potential_words = ["example", "words", "someone", "can", "guess"]
+word = random.choice(potential_words)
+
+# Use to test your code:
+# print(word)
+
+# Converts the word to lowercase
+word = word.lower()
+
+# Make it a list of letters for someone to guess
+current_word = [] # TIP: the number of letters should match the word
+
+for i in range (len(word)):  # appends the same number of "_" as there are letters
+	current_word.append("_")
+#print(current_word)
+
+
+
+
+# Some useful variables
+guesses = []
+maxfails = 7
+fails = 0
+
+while fails < maxfails:
+	print(current_word)
+	if "_" not in current_word:
+		print("You win! The word was", word.upper())
+		break
+	guess = input("Guess a letter: ")
+
+
+	if in_word(guess, word, current_word):
+		replace_letter(guess, word, current_word)
+		print("You guessed correctly")
+
+
+	if  guess not in word:
+		if guess in guesses:
+			print("you already guessed that letter, try again!")
+		else:
+			fails = fails+1
+			print("That letter isn't in the word. You have " + str(maxfails - fails) + " tries left!")
+			guesses.append(guess)
+
+if fails == maxfails:
+	print("Out of guesses. Your word was", word.upper())
